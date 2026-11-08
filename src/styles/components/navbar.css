@@ -1,0 +1,196 @@
+
+/* ==============================
+   MAIN NAVBAR
+============================== */
+
+.main-navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  background: rgba(16, 17, 20, 0.55);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(183, 242, 27, 0.12);
+  transition: background 0.3s ease;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  min-height: 75px;
+  margin: auto;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==============================
+   LOGO + BRAND NAME
+============================== */
+
+.navbar-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navbar-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  display: block;
+  width: 175px;
+  height: 85px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.logo-green {
+  color: #b7f21b;
+}
+
+.logo-dot {
+  color: #ffffff !important;
+}  
+
+/* ==============================
+   NAVIGATION LINKS
+============================== */
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-link {
+  color: #c7c7c7;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #b7f21b;
+}
+
+/* ==============================
+   GET A QUOTE BUTTON
+============================== */
+
+.navbar-quote-btn {
+  padding: 13px 22px;
+  border-radius: 5px;
+  background: #b7f21b;
+  color: #101114;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.navbar-quote-btn:hover {
+  background: #ffffff;
+  color: #101114;
+  transform: translateY(-2px);
+}
+
+/* ==============================
+   MOBILE MENU BUTTON
+============================== */
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #b7f21b;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* ==============================
+   TABLET & MOBILE RESPONSIVE
+============================== */
+
+@media (max-width: 992px) {
+  .navbar-container {
+    min-height: 75px;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 25px 6% 30px;
+    background: #101114;
+    border-bottom: 1px solid rgba(183, 242, 27, 0.2);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22px;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-link {
+    font-size: 16px;
+  }
+
+  .navbar-quote-btn {
+    text-align: center;
+  }
+}
+
+/* ==============================
+   SMALL MOBILE SCREENS
+============================== */
+
+@media (max-width: 480px) {
+  .brand-logo {
+    width: 55px;
+    height: 55px;
+  }
+
+  .brand-name {
+    font-size: 19px;
+  }
+
+  .navbar-brand {
+    gap: 8px;
+  }
+}
+
