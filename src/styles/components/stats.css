@@ -1,0 +1,134 @@
+
+.stats-section {
+  width: 100%;
+  padding: 110px 6%;
+  background: #101114;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Heading */
+
+.stats-heading {
+  max-width: 750px;
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.stats-heading > span {
+  display: inline-block;
+  color: #B7F21B;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.stats-heading h2 {
+  color: #F5F5F5;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.stats-heading h2 span {
+  color: #B7F21B;
+}
+
+.stats-heading p {
+  color: #A5A5A5;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Grid */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* Cards */
+
+.stat-card {
+  position: relative;
+  padding: 40px 25px;
+  min-height: 220px;
+  text-align: center;
+  background: #191B1F;
+  border: 1px solid rgba(183, 242, 27, 0.12);
+  border-radius: 15px;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(183, 242, 27, 0.6);
+  box-shadow: 0 15px 35px rgba(183, 242, 27, 0.08);
+}
+
+.stat-card h3 {
+  color: #B7F21B;
+  font-size: clamp(38px, 4vw, 55px);
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.stat-card h4 {
+  color: #F5F5F5;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.stat-card p {
+  color: #A5A5A5;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Tablet */
+
+@media (max-width: 992px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-section {
+    padding: 90px 5%;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+  .stats-section {
+    padding: 75px 5%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stats-heading {
+    margin-bottom: 40px;
+  }
+
+  .stats-heading p {
+    font-size: 14px;
+  }
+
+  .stat-card {
+    min-height: 190px;
+    padding: 30px 20px;
+  }
+}
