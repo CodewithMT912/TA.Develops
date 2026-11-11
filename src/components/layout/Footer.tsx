@@ -53,7 +53,7 @@ export default function Footer() {
           <div className="footer-brand">
             <Link href="/" className="footer-logo">
               <Image
-                src="/logo.png"
+                src="/logo/logo3.png"
                 alt="TA Develops Logo"
                 width={175}
                 height={85}
