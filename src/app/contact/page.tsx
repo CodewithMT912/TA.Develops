@@ -31,13 +31,35 @@ export default function ContactPage() {
     const formData = new FormData(form);
 
     const inquiry = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      service: formData.get("service"),
-      message: formData.get("message"),
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      service: String(formData.get("service") || ""),
+      message: String(formData.get("message") || ""),
     };
 
+    // Prepare WhatsApp message
+    const whatsappNumber = "923704060104";
+
+    const whatsappMessage = `
+NEW INQUIRY - TA DEVELOP S
+
+Name: ${inquiry.name}
+Email: ${inquiry.email}
+Service: ${inquiry.service}
+
+Message:
+${inquiry.message}
+    `.trim();
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    // Open a blank tab immediately to avoid popup blocking
+    const whatsappWindow = window.open("about:blank", "_blank");
+
     try {
+      // Save inquiry to Supabase
       const response = await fetch("/api/inquiries", {
         method: "POST",
         headers: {
@@ -52,10 +74,23 @@ export default function ContactPage() {
         throw new Error(result.error || "Something went wrong.");
       }
 
+      // Open WhatsApp after successful database submission
+      if (whatsappWindow) {
+        whatsappWindow.location.href = whatsappURL;
+      } else {
+        window.location.href = whatsappURL;
+      }
+
       setIsSuccess(true);
-      setFormMessage("Your message has been sent successfully!");
+      setFormMessage(
+        "Inquiry saved! WhatsApp is opening. Press Send to deliver your message."
+      );
+
       form.reset();
     } catch (error) {
+      // Close the blank tab if submission fails
+      whatsappWindow?.close();
+
       setIsSuccess(false);
       setFormMessage(
         error instanceof Error
@@ -258,7 +293,8 @@ export default function ContactPage() {
                 )}
 
                 <small className="contact-form-note">
-                  Your information is securely submitted to TA Develops.
+                  Your inquiry is saved securely and can be sent to us
+                  through WhatsApp.
                 </small>
 
               </form>

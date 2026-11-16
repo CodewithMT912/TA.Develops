@@ -519,3 +519,50 @@
     flex-direction: column;
   }
 }
+
+
+
+/* SHARED ADMIN SIDEBAR */
+
+.admin-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.admin-nav-link {
+  position: relative;
+}
+
+.admin-nav-link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 25%;
+  height: 50%;
+  width: 3px;
+  border-radius: 5px;
+  background: #b7f21b;
+}
+
+.admin-nav-link i {
+  width: 20px;
+  text-align: center;
+}
+
+.admin-sidebar-bottom {
+  margin-top: auto;
+}
+
+@media (max-width: 750px) {
+  .admin-sidebar {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .admin-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

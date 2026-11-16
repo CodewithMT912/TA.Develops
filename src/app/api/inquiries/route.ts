@@ -4,13 +4,27 @@ import { createClient } from "@supabase/supabase-js";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, service, message } =
-      await request.json();
+    const body = await request.json();
+
+    const {
+      name,
+      email,
+      whatsapp,
+      company,
+      service,
+      budget,
+      timeline,
+      description,
+    } = body;
 
     if (
       !name?.trim() ||
       !email?.trim() ||
-      !message?.trim()
+      !whatsapp?.trim() ||
+      !service?.trim() ||
+      !budget?.trim() ||
+      !timeline?.trim() ||
+      !description?.trim()
     ) {
       return NextResponse.json(
         { error: "Please fill in all required fields." },
@@ -24,31 +38,38 @@ export async function POST(request: Request) {
     );
 
     const { error } = await supabase
-      .from("inquiries")
+      .from("quote_requests")
       .insert([
         {
           name: name.trim(),
           email: email.trim(),
-          service: service || null,
-          message: message.trim(),
+          whatsapp: whatsapp.trim(),
+          company: company?.trim() || null,
+          service: service.trim(),
+          budget: budget.trim(),
+          timeline: timeline.trim(),
+          description: description.trim(),
         },
       ]);
 
     if (error) {
-      console.error("Supabase inquiry error:", error);
+      console.error("Supabase quote error:", error);
 
       return NextResponse.json(
-        { error: "Could not save your message." },
+        { error: "Could not save your quote request." },
         { status: 500 }
       );
     }
 
     return NextResponse.json(
-      { success: true, message: "Your message was sent successfully!" },
+      {
+        success: true,
+        message: "Quote request saved successfully!",
+      },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Inquiry API error:", error);
+    console.error("Quote API error:", error);
 
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },
